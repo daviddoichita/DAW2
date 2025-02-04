@@ -1,7 +1,10 @@
 package dav.doi.server.model.dto;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
@@ -16,23 +19,17 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ClienteDTO {
+public class ClienteDTO implements Serializable {
 
     private Long id;
-
     private String nif;
-
     private String nombre;
-
     private String apellidos;
-
     private String claveSeguridad;
-
     private String email;
-
     @DateTimeFormat(iso = ISO.DATE)
     private Date fechaNacimiento;
-
+    @JsonManagedReference
     private RecomendacionDTO recomendacionDTO;
 
     public static ClienteDTO convertToDTO(Cliente cliente) {
