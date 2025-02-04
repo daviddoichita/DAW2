@@ -67,4 +67,17 @@ public class ClienteRestController {
             return new ResponseEntity<>(clienteDTO, HttpStatus.OK);
         }
     }
+
+    @PutMapping(path = "")
+    public ResponseEntity<ClienteDTO> update(@RequestBody ClienteDTO clienteDTO) {
+        log.info(this.getClass().getSimpleName() + " update: modificar cliente con datos: {}", clienteDTO);
+
+        ClienteDTO cDTOExiste = this.clienteService.findById(clienteDTO.getId());
+        if (cDTOExiste == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            clienteDTO = this.clienteService.save(clienteDTO);
+            return new ResponseEntity<>(clienteDTO, HttpStatus.OK);
+        }
+    }
 }
