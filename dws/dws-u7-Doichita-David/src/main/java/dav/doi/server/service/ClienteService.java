@@ -12,7 +12,7 @@ public interface ClienteService {
 
     public ClienteDTO findById(Long id);
 
-    public void save(ClienteDTO clienteDTO);
+    public ClienteDTO save(ClienteDTO clienteDTO);
 
     public void deleteById(Long id);
 }

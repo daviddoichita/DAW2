@@ -46,7 +46,7 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     @Override
-    public void save(ClienteDTO clienteDTO) {
+    public ClienteDTO save(ClienteDTO clienteDTO) {
         log.info(this.getClass().getSimpleName() + " save: guardar cliente con datos: {}", clienteDTO);
 
         Set<Cuenta> cuentas = new HashSet<>();
@@ -55,7 +55,7 @@ public class ClienteServiceImpl implements ClienteService {
             cuentas = this.clienteRepository.findById(clienteDTO.getId()).get().getCuentas();
         }
 
-        this.clienteRepository.save(ClienteDTO.convertToEntity(clienteDTO, cuentas));
+        return ClienteDTO.convertToDTO(this.clienteRepository.save(ClienteDTO.convertToEntity(clienteDTO, cuentas)));
     }
 
     @Override

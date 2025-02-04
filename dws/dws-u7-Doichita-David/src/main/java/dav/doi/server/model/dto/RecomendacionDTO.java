@@ -1,5 +1,7 @@
 package dav.doi.server.model.dto;
 
+import java.io.Serializable;
+
 import dav.doi.server.repository.entity.Cliente;
 import dav.doi.server.repository.entity.Recomendacion;
 import lombok.AllArgsConstructor;
@@ -9,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class RecomendacionDTO {
+public class RecomendacionDTO implements Serializable {
 
     private Long id;
 
