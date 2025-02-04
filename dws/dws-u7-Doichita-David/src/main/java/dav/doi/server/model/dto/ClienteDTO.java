@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
@@ -29,7 +27,6 @@ public class ClienteDTO implements Serializable {
     private String email;
     @DateTimeFormat(iso = ISO.DATE)
     private Date fechaNacimiento;
-    @JsonManagedReference
     private RecomendacionDTO recomendacionDTO;
 
     public static ClienteDTO convertToDTO(Cliente cliente) {
