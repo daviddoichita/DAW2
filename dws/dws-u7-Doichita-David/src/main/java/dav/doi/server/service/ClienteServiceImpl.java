@@ -31,6 +31,14 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     @Override
+    public List<ClienteDTO> findByApellidos(String apellidos) {
+        log.info(this.getClass().getSimpleName() + " findByApellidos: devolver clientes con apellidos: {}", apellidos);
+
+        return this.clienteRepository.findAll().stream().filter(c -> c.getApellidos().equals(apellidos))
+                .map(ClienteDTO::convertToDTO).collect(Collectors.toList());
+    }
+
+    @Override
     public ClienteDTO findById(Long id) {
         log.info(this.getClass().getSimpleName() + " findById: devolver cliente con id: {}", id);
 
